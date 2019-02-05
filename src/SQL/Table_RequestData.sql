@@ -1,0 +1,33 @@
+USE [MIM_RequestArchive]
+GO
+
+/****** Object:  Table [dbo].[RequestData]    Script Date: 09/20/2016 09:49:58 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[RequestData](
+	[id] [bigint] IDENTITY(1,1) NOT NULL,
+	[inserted] [datetime] NOT NULL,
+	[RequestID] [uniqueidentifier] NOT NULL,
+	[AttributeKey] [smallint] NOT NULL,
+	[AttributeName] [nvarchar](448) NOT NULL,
+	[DataTypeKey] [smallint] NOT NULL,
+	[DataType] [nvarchar](100) NOT NULL,
+	[Multivalued] [bit] NULL,
+	[TextValue] [nvarchar](max) NULL,
+	[StringValue] [nvarchar](448) NULL,
+	[IntegerValue] [bigint] NULL,
+	[DateTimeValue] [datetime] NULL,
+	[ReferenceValue] [uniqueidentifier] NULL,
+	[BoolValue] [bit] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[RequestData] ADD  CONSTRAINT [DF_RequestDataArchive_inserted]  DEFAULT (getdate()) FOR [inserted]
+GO
+
+
